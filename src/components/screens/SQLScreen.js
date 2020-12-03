@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   headline: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#2196F3',
@@ -33,7 +33,6 @@ export const SQLScreen = (props) => {
   const readyToSubmit = statement.length;
 
   const handleInput = (input) => {
-    console.log('handleInput', input);
     const formattedInput = input;
     setStatement(formattedInput);
   };
@@ -50,6 +49,7 @@ Swipe vom linken Bildschirmrand nach rechts um den Drawer zu öffnen.
 In den Einstellungen findest du ein ER-Diagramm zur Datenbank, sowie die Möglichkeit die DB zurückzusetzen.`}
         </Text>
         <TextInput
+          value={statement}
           multiline={true}
           numberOfLines={10}
           style={styles.textInput}
@@ -67,7 +67,7 @@ In den Einstellungen findest du ein ER-Diagramm zur Datenbank, sowie die Möglic
               ? 'Statement ausführen'
               : 'Bitte gib ein Statement ein'
           }
-          // onPress={() => navigation.navigate('ResultScreen')}
+          onPress={() => navigation.navigate('ResultScreen', {statement})}
         />
       </View>
     </BasicScreen>

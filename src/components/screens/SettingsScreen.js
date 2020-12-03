@@ -1,11 +1,17 @@
-import React from 'react';
-import {Button} from 'react-native';
+import React, {useState} from 'react';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import {BasicScreen} from './BasicScreen';
+
+const styles = StyleSheet.create({
+  upperContainer: {
+    padding: 20,
+  },
+});
 
 export const SettingsScreen = (props) => {
   const {navigation} = props;
   return (
-    <BasicScreen addStyle={{backgroundColor: 'green'}}>
+    <BasicScreen>
       <Button title="Einstellungen" onPress={() => {}} />
     </BasicScreen>
   );

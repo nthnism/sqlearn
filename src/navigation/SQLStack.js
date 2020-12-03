@@ -12,6 +12,10 @@ export const SQLStack = () => (
       component={SQLScreen}
       options={{title: 'SQLearn'}}
     />
-    {/* <Stack.Screen name="ResultScreen" component={ResultScreen} /> */}
+    <Stack.Screen
+      name="ResultScreen"
+      component={ResultScreen}
+      options={{title: 'Ergebnisse'}}
+    />
   </Stack.Navigator>
 );
