@@ -4,11 +4,10 @@ import SQLite from 'react-native-sqlite-storage';
 import {BasicScreen} from './BasicScreen';
 
 const styles = StyleSheet.create({
-  errorMessage: {
+  message: {
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'red',
     paddingBottom: 20,
   },
 });
@@ -16,6 +15,7 @@ const styles = StyleSheet.create({
 export const ResultScreen = (props) => {
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
+  const [rowsChanged, setRowsChanged] = useState(0);
   const {route} = props;
   const {statement} = route.params;
 
@@ -32,12 +32,16 @@ export const ResultScreen = (props) => {
             statement,
             [],
             (tx, res) => {
-              const rawResults = res.rows.raw();
-              console.log('results', rawResults);
-              setResults(rawResults);
+              console.log('res', res);
+              if (res.rowsAffected > 0) {
+                setRowsChanged(res.rowsAffected);
+              } else {
+                const rawResults = res.rows.raw();
+                setResults(rawResults);
+              }
             },
             (err) => {
-              console.log('error', err);
+              console.log('err', err);
               setError(err.message);
             },
           );
@@ -51,8 +55,16 @@ export const ResultScreen = (props) => {
   if (error) {
     return (
       <BasicScreen>
-        <Text style={styles.errorMessage}>Ups, da ist etwas schief gelaufen...</Text>
+        <Text style={styles.message}>Ups, da ist etwas schief gelaufen...</Text>
         <Text>{error}</Text>
+      </BasicScreen>
+    );
+  }
+
+  if (rowsChanged) {
+    return (
+      <BasicScreen>
+        <Text style={styles.message}>{`Du hast erfolgreich ${rowsChanged} Zeile(n) geschrieben`}</Text>
       </BasicScreen>
     );
   }
