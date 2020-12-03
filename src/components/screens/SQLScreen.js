@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {BasicScreen} from './BasicScreen';
 
