@@ -5,14 +5,10 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {BasicScreen} from './BasicScreen';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  upperInnerContainer: {
+  upperContainer: {
     padding: 20,
   },
-  lowerInnerContainer: {
+  lowerContainer: {
     padding: 20,
   },
   headline: {
@@ -20,6 +16,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#2196F3',
+    paddingBottom: 20,
+  },
+  paragraph: {
     paddingBottom: 20,
   },
   textInput: {
@@ -36,42 +35,41 @@ export const SQLScreen = (props) => {
 
   const handleInput = (input) => {
     console.log('handleInput', input);
-    setStatement(input);
+    const formattedInput = input;
+    setStatement(formattedInput);
   };
 
   return (
     <BasicScreen>
-      <View style={styles.container}>
-        <KeyboardAwareScrollView contentContainerStyle={styles.upperInnerContainer}>
-          <Text style={styles.headline}>Willkommen bei SQLearn</Text>
-          <Text>
-            {`Diese App bietet dir eine kleine und sichere Sandbox. Hier kannst du die Formulierung von SQL Statements an einer Test-Datenbank erlernen und üben.
+      <KeyboardAwareScrollView contentContainerStyle={styles.upperContainer}>
+        <Text style={styles.headline}>Willkommen bei SQLearn</Text>
+        <Text style={styles.paragraph}>
+          {`Diese App bietet dir eine kleine und sichere Sandbox. Hier kannst du die Formulierung von SQL Statements an einer Test-Datenbank erlernen und üben.
 
 Swipe vom linken Bildschirmrand nach rechts um den Drawer zu öffnen.
 
 In den Einstellungen findest du ein ER-Diagramm zur Datenbank, sowie die Möglichkeit die DB zurückzusetzen.`}
-          </Text>
-          <TextInput
-            multiline={true}
-            numberOfLines={10}
-            style={styles.textInput}
-            onChangeText={(t) => handleInput(t)}
-            textAlignVertical="top"
-            placeholder="Gib hier dein SQL-Statement ein"
-          />
-        </KeyboardAwareScrollView>
-        <View style={styles.lowerInnerContainer}>
-          <Button
-            disabled={!readyToSubmit}
-            color={readyToSubmit ? '#2196F3' : 'grey'}
-            title={
-              readyToSubmit
-                ? 'Statement ausführen'
-                : 'Bitte gib ein Statement ein'
-            }
-            // onPress={() => navigation.navigate('ResultScreen')}
-          />
-        </View>
+        </Text>
+        <TextInput
+          multiline={true}
+          numberOfLines={10}
+          style={styles.textInput}
+          onChangeText={(t) => handleInput(t)}
+          textAlignVertical="top"
+          placeholder="Gib hier dein SQL-Statement ein"
+        />
+      </KeyboardAwareScrollView>
+      <View style={styles.lowerContainer}>
+        <Button
+          disabled={!readyToSubmit}
+          color={readyToSubmit ? '#2196F3' : 'grey'}
+          title={
+            readyToSubmit
+              ? 'Statement ausführen'
+              : 'Bitte gib ein Statement ein'
+          }
+          // onPress={() => navigation.navigate('ResultScreen')}
+        />
       </View>
     </BasicScreen>
   );

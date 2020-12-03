@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     padding: 20,
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
   keyboardAvoidingView: {
     flex: 1,
