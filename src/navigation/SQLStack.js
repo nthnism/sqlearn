@@ -6,8 +6,12 @@ import {ResultScreen, SQLScreen} from '../components/screens';
 const Stack = createStackNavigator();
 
 export const SQLStack = () => (
-  <Stack.Navigator initialRouteName="SQLScreens">
-    <Stack.Screen name="SQLScreen" component={SQLScreen} />
+  <Stack.Navigator initialRouteName="SQLScreen">
+    <Stack.Screen
+      name="SQLScreen"
+      component={SQLScreen}
+      options={{title: 'SQL anwenden'}}
+    />
     {/* <Stack.Screen name="ResultScreen" component={ResultScreen} /> */}
   </Stack.Navigator>
 );

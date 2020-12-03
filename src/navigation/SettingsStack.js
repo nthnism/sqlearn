@@ -7,7 +7,11 @@ const Stack = createStackNavigator();
 
 export const SettingsStack = () => (
   <Stack.Navigator initialRouteName="SettingsScreen">
-    <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+    <Stack.Screen
+      name="SettingsScreen"
+      component={SettingsScreen}
+      options={{title: 'Einstellungen'}}
+    />
     {/* <Stack.Screen name="ERScreen" component={ERScreen} /> */}
   </Stack.Navigator>
 );

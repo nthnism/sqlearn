@@ -7,8 +7,16 @@ import {SettingsStack} from './SettingsStack';
 const DrawerNav = createDrawerNavigator();
 
 export const Drawer = () => (
-  <DrawerNav.Navigator initialRouteName="SQL anwenden">
-    <DrawerNav.Screen name="SQL anwenden" component={SQLStack} />
-    <DrawerNav.Screen name="Einstellungen" component={SettingsStack} />
+  <DrawerNav.Navigator initialRouteName="SQLStack">
+    <DrawerNav.Screen
+      name="SQLStack"
+      component={SQLStack}
+      options={{title: 'SQL anwenden'}}
+    />
+    <DrawerNav.Screen
+      name="SettingsStack"
+      component={SettingsStack}
+      options={{title: 'Einstellungen'}}
+    />
   </DrawerNav.Navigator>
 );
