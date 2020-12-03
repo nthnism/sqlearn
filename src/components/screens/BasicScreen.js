@@ -5,8 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
   },
 });
 

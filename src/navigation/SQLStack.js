@@ -10,7 +10,7 @@ export const SQLStack = () => (
     <Stack.Screen
       name="SQLScreen"
       component={SQLScreen}
-      options={{title: 'SQL anwenden'}}
+      options={{title: 'SQLearn'}}
     />
     {/* <Stack.Screen name="ResultScreen" component={ResultScreen} /> */}
   </Stack.Navigator>
