@@ -34,6 +34,11 @@ export const SQLScreen = (props) => {
   const [statement, setStatement] = useState('');
   const readyToSubmit = statement.length;
 
+  const handleInput = (input) => {
+    console.log('handleInput', input);
+    setStatement(input);
+  };
+
   return (
     <BasicScreen>
       <View style={styles.container}>
@@ -50,7 +55,7 @@ In den Einstellungen findest du ein ER-Diagramm zur Datenbank, sowie die Möglic
             multiline={true}
             numberOfLines={10}
             style={styles.textInput}
-            onChangeText={(t) => setStatement(t)}
+            onChangeText={(t) => handleInput(t)}
             textAlignVertical="top"
             placeholder="Gib hier dein SQL-Statement ein"
           />
