@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {KeyboardAvoidingView, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const styles = StyleSheet.create({
@@ -7,13 +7,22 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
+  keyboardAvoidingView: {
+    flex: 1,
+  },
 });
 
 export const BasicScreen = ({children, addStyle}) => {
-  let style = styles.safeArea;
+  let style = styles.keyboardAvoidingView;
   if (addStyle) {
     style = StyleSheet.flatten([styles.safeArea, {...addStyle}]);
   }
 
-  return <SafeAreaView style={style}>{children}</SafeAreaView>;
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <KeyboardAvoidingView style={style} behavior="height">
+        {children}
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
 };

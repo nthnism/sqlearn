@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {BasicScreen} from './BasicScreen';
 
 const styles = StyleSheet.create({
@@ -9,10 +10,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   upperInnerContainer: {
-    width: '100%',
     padding: 20,
-    flex: 1,
-    justifyContent: 'space-between',
   },
   lowerInnerContainer: {
     padding: 20,
@@ -39,10 +37,12 @@ export const SQLScreen = (props) => {
   return (
     <BasicScreen>
       <View style={styles.container}>
-        <View style={styles.upperInnerContainer}>
+        <KeyboardAwareScrollView contentContainerStyle={styles.upperInnerContainer}>
           <Text style={styles.headline}>Willkommen bei SQLearn</Text>
           <Text>
             {`Diese App bietet dir eine kleine und sichere Sandbox. Hier kannst du die Formulierung von SQL Statements an einer Test-Datenbank erlernen und üben.
+
+Swipe vom linken Bildschirmrand nach rechts um den Drawer zu öffnen.
 
 In den Einstellungen findest du ein ER-Diagramm zur Datenbank, sowie die Möglichkeit die DB zurückzusetzen.`}
           </Text>
@@ -54,7 +54,7 @@ In den Einstellungen findest du ein ER-Diagramm zur Datenbank, sowie die Möglic
             textAlignVertical="top"
             placeholder="Gib hier dein SQL-Statement ein"
           />
-        </View>
+        </KeyboardAwareScrollView>
         <View style={styles.lowerInnerContainer}>
           <Button
             disabled={!readyToSubmit}
