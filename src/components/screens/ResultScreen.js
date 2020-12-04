@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
+
+import {TableView} from '../TableView';
 import {BasicScreen} from './BasicScreen';
 
 const styles = StyleSheet.create({
@@ -20,7 +22,6 @@ export const ResultScreen = (props) => {
   const {statement} = route.params;
 
   useEffect(() => {
-    console.log('useEffect');
     const db = SQLite.openDatabase(
       {
         name: 'chinook.db',
@@ -32,7 +33,6 @@ export const ResultScreen = (props) => {
             statement,
             [],
             (tx, res) => {
-              console.log('res', res);
               if (res.rowsAffected > 0) {
                 setRowsChanged(res.rowsAffected);
               } else {
@@ -41,7 +41,6 @@ export const ResultScreen = (props) => {
               }
             },
             (err) => {
-              console.log('err', err);
               setError(err.message);
             },
           );
@@ -64,18 +63,15 @@ export const ResultScreen = (props) => {
   if (rowsChanged) {
     return (
       <BasicScreen>
-        <Text style={styles.message}>{`Du hast erfolgreich ${rowsChanged} Zeile(n) geschrieben`}</Text>
+        <Text style={styles.message}>{`Du hast erfolgreich ${rowsChanged} Zeile${(rowsChanged > 1) && 'n'} geschrieben`}</Text>
       </BasicScreen>
     );
   }
 
   if (results) {
-    const stringifiedRes = JSON.stringify(results);
-
     return (
       <BasicScreen>
-        <Text>Hier wird gebaut</Text>
-        <Text>{stringifiedRes}</Text>
+        <TableView results={results} />
       </BasicScreen>
     );
   }

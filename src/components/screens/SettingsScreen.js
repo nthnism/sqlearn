@@ -12,7 +12,7 @@ export const SettingsScreen = (props) => {
   const {navigation} = props;
   return (
     <BasicScreen>
-      <Button title="Einstellungen" onPress={() => {}} />
+      <Button title="Datenbank zurücksetzen" onPress={() => {}} />
     </BasicScreen>
   );
 };
