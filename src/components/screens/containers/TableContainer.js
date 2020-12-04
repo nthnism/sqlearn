@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const TableView = (props) => {
+export const TableContainer = (props) => {
   const {results} = props;
 
   const tableHeaderRow = Object.keys(results[0]);
