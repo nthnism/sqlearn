@@ -23,7 +23,7 @@ export const SettingsScreen = (props) => {
     <BasicScreen addStyle={styles.addStyle}>
       <View style={styles.view}>
         <Text style={styles.paragraph}>Hier kannst du das ER-Diagramm zur Datenbank betrachten</Text>
-        <Button title="Diagramm ansehen" onPress={() => {}} />
+        <Button title="Diagramm ansehen" onPress={() => navigation.navigate('ERScreen')} />
       </View>
       <View style={styles.view}>
         <Text style={styles.paragraph}>Hier kannst du die Datenbank zurücksetzen</Text>

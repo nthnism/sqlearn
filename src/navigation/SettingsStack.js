@@ -12,6 +12,10 @@ export const SettingsStack = () => (
       component={SettingsScreen}
       options={{title: 'Einstellungen'}}
     />
-    {/* <Stack.Screen name="ERScreen" component={ERScreen} /> */}
+    <Stack.Screen
+      name="ERScreen"
+      component={ERScreen}
+      options={{title: 'Diagramm'}}
+    />
   </Stack.Navigator>
 );
