@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text} from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
 
-import {TableContainer} from './containers/TableContainer';
+import {TableContainer} from '../containers/TableContainer';
 import {BasicScreen} from './BasicScreen';
 
 const styles = StyleSheet.create({
