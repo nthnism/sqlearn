@@ -1,18 +1,34 @@
-import React, {useState} from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import React from 'react';
+import {Button, StyleSheet, Text, View} from 'react-native';
 import {BasicScreen} from './BasicScreen';
 
 const styles = StyleSheet.create({
-  upperContainer: {
-    padding: 20,
+  addStyle: {
+    justifyContent: 'space-around',
+  },
+  paragraph: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    paddingBottom: 20,
+  },
+  view: {
+    width: '100%',
   },
 });
 
 export const SettingsScreen = (props) => {
   const {navigation} = props;
   return (
-    <BasicScreen>
-      <Button title="Datenbank zurücksetzen" onPress={() => {}} />
+    <BasicScreen addStyle={styles.addStyle}>
+      <View style={styles.view}>
+        <Text style={styles.paragraph}>Hier kannst du das ER-Diagramm zur Datenbank betrachten</Text>
+        <Button title="Diagramm ansehen" onPress={() => {}} />
+      </View>
+      <View style={styles.view}>
+        <Text style={styles.paragraph}>Hier kannst du die Datenbank zurücksetzen</Text>
+        <Button title="Datenbank zurücksetzen" onPress={() => {}} />
+      </View>
     </BasicScreen>
   );
 };
