@@ -10,14 +10,13 @@ const styles = StyleSheet.create({
 });
 
 export const ERScreen = (props) => {
-  const {navigation} = props;
   return (
     <BasicScreen>
       <ScrollView horizontal={true}>
         <ScrollView>
           <Image
             style={styles.gallery}
-            source={require('../../images/diagram.png')}
+            source={require('../../diagrams/chinook.png')}
           />
         </ScrollView>
       </ScrollView>
