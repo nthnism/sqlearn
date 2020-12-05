@@ -63,7 +63,7 @@ export const ResultScreen = (props) => {
   if (rowsChanged) {
     return (
       <BasicScreen>
-        <Text style={styles.message}>{`Du hast erfolgreich ${rowsChanged} Zeile${(rowsChanged > 1) && 'n'} geschrieben`}</Text>
+        <Text style={styles.message}>{`Du hast erfolgreich ${rowsChanged} Zeile${(rowsChanged > 1) ? 'n' : ''} geschrieben`}</Text>
       </BasicScreen>
     );
   }
