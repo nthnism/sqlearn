@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text} from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
+import { useSelector } from 'react-redux';
 
 import {TableContainer} from '../containers/TableContainer';
 import {BasicScreen} from './BasicScreen';
@@ -20,12 +21,13 @@ export const ResultScreen = (props) => {
   const [rowsChanged, setRowsChanged] = useState(0);
   const {route} = props;
   const {statement} = route.params;
+  const selectedDB = useSelector((state) => state.reducerApp.selectedDb);
 
   useEffect(() => {
     const db = SQLite.openDatabase(
       {
-        name: 'chinook.db',
-        createFromLocation: '~chinook.db',
+        name: `${selectedDB}.db`,
+        createFromLocation: `~${selectedDB}.db`,
       },
       () => {
         db.transaction((tx) => {
@@ -49,7 +51,7 @@ export const ResultScreen = (props) => {
       null,
       null,
     );
-  }, [statement]);
+  }, [statement, selectedDB]);
 
   if (error) {
     return (
